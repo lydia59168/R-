@@ -1,0 +1,32 @@
+---
+title: "R"
+author: "統計系111級-H24076126-黃詠齡"
+date: "2020/5/2"
+output: html_document
+---
+git remote add origin https://github.com/lydia59168/R-.git
+git push -u origin master
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1.Set Up
+
+### How to set up R?
+
+First, we need to install R.  If we didn't install R, we won't be able to use anything.  We can install the software R from their official website <https://www.r-project.org/>.
+
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
