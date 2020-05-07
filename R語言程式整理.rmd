@@ -1,0 +1,571 @@
+---
+title: "R Coding"
+author: "統計系111級-H24076126-黃詠齡"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## 1.Set Up
+### > How to set up R?
+#### First, we need to install R.  If we didn't install R, we won't be able to use anything.  We can install the software R from their official website <https://www.r-project.org/>.  After installing the software, we are ready to start.
+#### By the way, there is another option that we recommand.  Install RStudio after installing the software R.
+### > What is Rstudio?
+#### Rstudio is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management and it also provides a more comfortable interface for users.  We can install RStudio from their official website <https://rstudio.com/products/rstudio/>.
+## 2.Introduction to Calculation
+#### Calculation is always what we learn first from every coding software.  So, we are now introducing a few ways to claculate with R.
+### > Basic calculation(Calculator)
+#### a.Addition
+```{r}
+3+2
+```
+#### b.Subtraction
+```{r}
+3-2
+```
+#### c.Multiplication
+```{r}
+3*2
+```
+#### d.Division
+```{r}
+3/2
+```
+#### e.Power
+```{r}
+3^2
+```
+#### f.Quotient
+```{r}
+3%/%2
+```
+#### g.Remainder
+```{r}
+3%%2
+```
+### > Calculation by the set values
+#### Before we learn how to calculate by the set values, we need to learn how to set values.  But, what is a set value?
+#### A set value is a code with an assignment. Such as A represents 9, or B represents 5222544...etc.
+#### > How do we set values?
+##### We set values by using "<-" or "=", either of them is fine.
+##### For example,
+```{r}
+a<-3
+a
+```
+#### >How do we calculate with set values?
+##### Just calculate like basic calculatation, yet change the numbers into codes.
+##### For example,
+```{r}
+a<-3
+b<-2
+a+b
+```
+### > Funtions related to statistics
+#### Before learning functions related statistics, we will need to learn how to create a vector first.
+#### > How do we create a vector?
+##### We create a vector by using c().  We use c() to be a collection of needed values. 
+##### For example,
+```{r}
+a<-c(1,2,3,4,5)
+a
+```
+##### But sometimes it will be very annoying to type in all the numbers, so there's a function that can easily solve the problem. It is the function ":".  It works like this: if we want to create a vector b which represents "2,3,4,5,6", we can write it in an easier way b<-c(2:6), which means exactly the same.
+```{r}
+b<-c(2,3,4,5,6)
+b
+```
+
+```{r}
+b<-c(2:6)
+b
+```
+#### > Functions related to statistics
+##### We can easily find the mean, variance, median and quantile by using R. What we need is only the vectors of the data, and put the vectors into the function, by doing this way we easily solve the answers of it.For example,
+```{r}
+a<-c(1:100)
+mean(a)
+var(a)
+median(a)
+quantile(a)
+```
+## 3.Introduction to vectors
+#### We just learnt something about vectors in the calculation part, yet that is just a little part of it. What we are going to learn right now is something that is different from it.
+### > Combination
+#### Combination is an easy method to combine 2 vectors into 1. For example,
+```{r}
+a<-c(2:7)
+b<-c(20:25)
+a<-c(a,b)
+a
+```
+### > Repeat
+#### We a vector is a repeating vector, we can use the function rep() to make coding easier.For example,
+```{r}
+a<-c(1,2,3,1,2,3,1,2,3)
+a
+a<-rep(c(1:3),3)
+a
+```
+### > Length
+#### Sometimes, we are really willing to know how many values are there, yet it was too many to count one by one.  In this situation, we will neded the function length(). It works like this:
+```{r}
+a<-c(125:2845)
+length(a)
+```
+### > Sort and order vectors
+#### When the vectors are messy and not in the right order, we can use sort() and order() to make them in order.  Sort() is used to make the vectors in order by showing the values, while order() is used to make the vectors in order by showing the value's position.  Take a<-c(5,1,9,6,8,7,5,3,6,222) as an example.
+```{r}
+a<-c(5,1,9,6,8,7,5,3,6,222)
+sort(a)
+```
+
+```{r}
+a<-c(5,1,9,6,8,7,5,3,6,222)
+order(a)
+```
+### > Change values
+#### There is always sometimes that we accidently type in the wrong values into a vector, therefore, we are now learning how to change values in vectors.  We use "[]" to show the position of the value and "<-" to correct the wrong value.
+
+```{r}
+a<-c(1,2,3,4)
+a[2]<-5
+a
+```
+### > Remove NA
+#### Before we learn how to do this, we should know what is NA first.  NA means not available, which means that it can't be used in the vector. So it should be removed from the data if we want to use the data.  We can complete the job by adding in the code "na.rm = TRUE" in the function.  For example,
+
+```{r}
+a<-c(1,2,8,5,4,6,NA,7,9,8,3)
+mean(a,na.rm=TRUE)
+```
+### > Make a set
+#### If we want to make a set, just use the function "summary()". This is how it works:
+
+```{r}
+a<-c(1,2,8,5,4,6,NA,7,9,8,3)
+summary(a)
+```
+### > Examine the type of the vectors
+#### What should we do if we want to know the vector's type?  The function "class()" can solve the problem.  So, if "a" is a vector which contains 123, 5864 and 255575, what type of vector is "a"?
+
+```{r}
+a<-c(123,5864,255575)
+class(a)
+```
+#### Another waay to examine the type of the vectors is using the "is.XYZ()" series, which XYZ stands for the type of an object, such as "is.null()", "is.numeric()", "is.interger()"...etc.
+
+```{r}
+c(is.na(NA), is.na(2))
+```
+## 4.Inroduction to matrixs
+### > How to construct a matrix?
+#### Before we introduce matric, we need to have a matrix first.  There are two ways to construct matrixs, by rows and by columns.
+#### > By rows
+#### If we want to constuct a matrix by rows, we use the function "rbind()".
+
+```{r}
+a <- 1:5; b <- 6:10; c <- 11:15; d <- 16:20
+rbind(a,b,c,d)
+```
+#### > By columns
+#### If we want to construct a matrix by columns, we use the function "cbind()".
+
+```{r}
+a <- 1:5; b <- 6:10; c <- 11:15; d <- 16:20
+cbind(a,b,c,d)
+```
+#### > By long vectors
+#### Sometimes we need to construct a matrix by really long vectors, when we meet this situation, we can use matrix(a,nrow=,ncol=,byrow=T/F) to solve the problem. In the function "a" can be any long vectors, and we can choose True or False of the code "byrow".  If we choose "True", then it is going to construct the matrix by row, if "False", it is going to construct the matrix by columns.  By the way, "nrow" and "ncol" stands for the number of the rows and columns you want to set.
+
+```{r}
+matrix(1:20, nrow = 4, ncol = 5, byrow = TRUE)
+```
+
+```{r}
+matrix(1:20, nrow = 4, ncol = 5, byrow = FALSE)
+```
+### > Set names for rows and columns
+#### We can use "colnames()" and "rownames()" to set names for the matrix.
+
+```{r}
+k<-matrix(1:20, nrow = 4, ncol = 5, byrow = FALSE)
+colnames(k)<-c("a","b","c","d","e")
+rownames(k)<-c("V1","V2","V3","V4")
+k
+```
+### > Find the element from positions
+#### What code or function can we use if we want to find an element in the matrix, yet we just know its position?  If we meet this kind of situation, we can use X[a,b], where X stands for the name of the matrix.  In this function, we are supposed to put in interger in position "a" and "b", and "a" stands for the number you want to find of the rows, and "b" stands for the number you want to find of the coulmns.
+
+```{r}
+k<-matrix(1:20, nrow = 4, ncol = 5, byrow = FALSE)
+k[3,4]
+```
+## 5.Control flow
+#### There are a few control flows that will be used alot in coding, including the for() loop, the if() statement, the while() loop and some other ones such as "break", "repeat" and "next".
+### > The for() loop
+#### The for() statement allows one to specify that a certain operation should be repeated a ﬁxed number of times. The syntax of for() loop is "for (index in vector) commands", where index stands for the index is changed each time, vector includes all possible cases and commands stands for actions.
+#### Let's take 10! as an example.
+```{r}
+n <- 10
+ans <- 1
+for(j in n:1){
+  ans <- ans * j }
+ans
+```
+### The if() statement
+#### The if() statement causes a set of commands to be invoked if condition evaluates to TRUE.  The syntax of if() statement is "if (condition) {commands when TRUE} else {commands when FALSE}".  In this syntax, it is only suitable for cases with only one condition, and the else part is optional, and provides an alternative set of commands which are to be invoked in case the logical variable is FALSE.  If the situation is with multiple conditions, we should use the syntax which looks like this: if (condition1) { commands when condition1 is TRUE } else if (condition2) { commands when condition2 is TRUE } else { commands when condition1 and condition2 are FALSE }.
+#### Here's an example for only one condition.
+```{r}
+C <- c(3, 4, NA, 12, 0.2, NA, -2)
+for(i in 1:7){
+  if(is.na(C[i])) print(i)
+  } 
+```
+#### And an example for multiple conditions.
+```{r}
+basket <- c("r", "b", "y", "y", "y", "r", "r", "b")
+n.r <- 0; n.b <- 0; n.y <- 0
+for(i in 1:length(basket)){
+  if(basket[i] == "r"){ n.r <- n.r + 1
+  }
+  else if(basket[i] == "b"){ n.b <- n.b + 1
+  }else{ n.y <- n.y + 1
+ }
+}
+c(n.r, n.b, n.y)
+
+```
+### > The while() loop
+#### The pattern of repetition isn’t known in advance and we need to do some calculations and keep going as long as a condition holds.  The while()statement accomplishes this.  The syntax of while loop looks like this: "while (condition) statements".  If the condition evaluates to FALSE, nothing more is done. If it evaluates to TRUE the statements are executed, condition is evaluated again, and the process is repeated.  By the way, the while() loop need the initial, condition of stopping, and iteration or replacement.
+#### Here's an example for while() loop.
+```{r}
+j <- 1
+while(j <= 8){
+  print(j)
+  j <- j + 1
+ } 
+```
+### > Others
+#### > Break
+#### The break statement causes the loop to terminate immediately. break statements can also be used in for() and while() loops.  The syntax of break is "if (condition) break".
+#### > Repeat
+#### We use “repeat” to repeat until we execute a break statement.  It causes the statements to be repeated endlessly.  The syntax of repeat looks like this: "repeat { statements }".
+#### > Next
+#### The next statement causes control to return immediately to the top of the loop; it can also be used in any loop. 
+#### Here's the example of using both "break" and "repeat".
+```{r}
+Fib1 <- 1
+Fib2 <- 1
+Fibonacci <- c(Fib1)
+repeat
+  {
+    if(Fib2 >= 100)
+      break
+    Fibonacci <- c(Fibonacci, Fib2)
+    Fib1 <- Fibonacci[length(Fibonacci) - 1]
+    Fib2 <- Fib1 + Fibonacci[length(Fibonacci)]
+  }
+Fibonacci
+```
+#### And an example of using both "next" and "repeat".
+```{r}
+Fib1 <- 1
+Fib2 <- 1
+Fibonacci <- c(Fib1)
+for(j in 1:100){
+  if(Fib2 >= 100) next
+    Fibonacci <- c(Fibonacci, Fib2)
+    Fib1 <- Fibonacci[length(Fibonacci) - 1]
+    Fib2 <- Fib1 + Fibonacci[length(Fibonacci)]
+  }
+Fibonacci 
+```
+## 6.Functions
+### > print() and cat()
+#### The function print() and cat() are actually really similar, but what makes them different is print() shows " " between charactars, while cat() don't.
+#### It will be easy to realize in the example below.
+```{r}
+x <- c("A", "B", "C", "D")
+print(x)
+cat(x)
+```
+### > function()
+#### When we only have one main code for evaluation and multiple possible input, we can use function() to do the work.
+#### By the way, there is an important code which is used in function(): return().  If we don’t put return( ) at the end of the function, it will treat the last line as the result automatically. 
+#### Here's an example of function() with a single input variable.
+```{r}
+f <- function(x){
+  return
+ }
+f(2) 
+```
+#### And an example of function() with multiple input variables.
+```{r}
+make.percent <- function(x, x.digits){
+  x.percent <- round(100*x, digits = x.digits)
+  x.show <- paste(x.percent, "%", sep = "")
+  return(x.show)
+ }
+make.percent(c(0.8933, 0.2344, 0.0764, 0.7736), 0)
+```
+#### > Return multiple output
+#### What can we do if we want to return multiple outputs while using function()?  We should use list() to help.  
+#### But, what is list()?
+##### > Introduction to list()
+##### The funtion "list( )" is a collection of multiple types of objects, like vectors, characters, numbers, lists,.... 
+##### For example,
+```{r}
+X <- list(a = 3, b = c(1,2,3,4,5), c = c("A", "B"))
+X 
+```
+##### In list(), there are two really important code that we need to know "$" and "[[]]".  "$a" is used when "a" represents the name of the elements while "[[a]]" is used when "a" represents the location or the name of the element. 
+##### For example,
+```{r}
+X <- list(a = 3, b = c(1,2,3,4,5), c = c("A", "B"))
+X$a
+X[[2]] 
+```
+#### After learning how to use list(), it is time for us to use function() and list() to solve the problem of returning multiple output.
+#### For example,
+```{r}
+perfect.number <- function(a, b){
+  k <- a
+  res <- c()
+  ans <- list()
+  while(k < b){
+    fac <- c()
+    for(j in 1:k){
+      if((k %% j) == 0)
+        fac <- c(fac, j)
+    }
+    if(k == sum(fac[-length(fac)])) {
+      res <- c(res, k)
+      ans[[paste(k)]] <- fac[-length(fac)]
+    }
+      k <- k+1
+  }
+  ans$number <- res
+  return(ans)
+}
+Ans <- perfect.number(1, 100)
+Ans 
+```
+## 7.Related to data
+### > Data frame
+#### Most data sets are stored in R as data frames.  They are like matrices, but with the columns having their own names.  Columns can be of diﬀerent types from each other.  We use data.frame() to construct data frames from vectors.
+#### For example,
+```{r}
+colors <- c("red", "yellow", "blue")
+numbers <- c(1, 2, 3)
+colors.and.numbers <- data.frame(colors, numbers, more.numbers = c(4, 5, 6))
+colors.and.numbers 
+```
+#### If we want to add rows or columns to the data frame, we can use function "rbind()" to add rows and both "$" and "cbind" to add columns.
+#### For example, add rows
+```{r}
+colors <- c("red", "yellow", "blue")
+numbers <- c(1, 2, 3)
+data2 <- data.frame(colors, numbers, more.numbers = c(4, 5, 6), stringsAsFactors = FALSE)
+data2 <- rbind(data2, c("black", 3, 5))
+data2
+```
+#### Example for adding columns
+```{r}
+colors <- c("red", "yellow", "blue")
+number1 <- c(1, 2, 3)
+number2 <- c(10, 11, 12)
+colors.and.numbers <- data.frame(colors, number1) 
+colors.and.numbers$more.numbers <- c(4, 5, 6)  
+colors.and.numbers <- cbind(colors.and.numbers, number2) 
+colors.and.numbers 
+```
+## 8.Graphics
+### > Graphs used in statistics
+#### > For an arbitray vector x
+#### If it is given an arbitray vector x, we can draw histogram, boxplot and density plot as its graph.  Their syntaxs are hist(), boxplot() and plot(density()).
+#### Here's an example for them
+```{r}
+x.norm <- rnorm(100, mean=0, sd=1)
+hist(x.norm)
+boxplot(x.norm)
+plot(density(x.norm))
+```
+
+#### > For discrete variables
+#### When it comes to discrete variables, we can draw barchart and piechart as their graphs.  Their codes are barplot() and pie().
+#### For example,
+```{r}
+x <- sample(c(1:8), 100, replace=TRUE, prob=c(8:1))
+x <- table(x)
+names(x) <- c("A", "B", "C", "D", "E", "F", "G", "H")
+barplot(x)
+pie(x)
+```
+
+#### > Correlation between variables
+##### > For two variables
+##### If we want to see the correlation between two variables, we can draw scatter plot as the graph, since scatter plot is used to figure out the correlation between variables. We use plot() to draw a scatter plot.
+##### This is an example for scatter plot for only two variables
+```{r}
+x <- rnorm(100)
+y <- 3*x + rnorm(100, 0, 1)
+plot(x, y)
+```
+
+##### > For multiple variables
+##### We just learned how to do the graphs of scatter plot of two variable, but what should we do if we got not only two variables?  If we meet this kind of situation, we should use the function pairs(). 
+##### For example,
+```{r}
+X <- matrix(rnorm(30), 10, 3) 
+pairs(X, pch = 19)
+```
+
+### > General plot functions
+#### This is how a general plot funtion looks like this: "plot(x, y, type = "p", pch = , main = NULL, lty = , lwd = , cex = , bty="o", col = , xlim = NULL, ylim = NULL, sub = NULL, xlab = NULL, ylab = NULL, cex.main = )".  In this function, "type" means the types of the plot, "pch" means the symbol in the plot, "main" means the title of the plot, "lty" means the style of a line, "lwd" means the width of a line, "cex" stands for the size of an text, "col" stands for the color of an object, "byt" stands for the box around the plot, "xlim" and "ylim" means the range of an axis, "sub" stands for the sub-title of the plot, "xlab" and "ylab" stands for the name of the axis, last but not least, "cex.main" stands for the size of the main title.
+#### Here's an example of the plot function
+```{r}
+t <- 1:20
+y <- rnorm(20)
+par(mfrow = c(2,3)) 
+plot(t, y, type = "p", pch = 1, main = "p", col = 1, lty = 1, lwd = 0.5, bty = "o")
+plot(t, y, type = "o", pch = 3, main = "o",col = 2, lty = 2, lwd = 1, bty = "n")
+plot(t, y, type = "b", pch = 5, main = "b", col = "green", lty = 3, lwd = 1.5, bty = "7")
+plot(t, y, type = "l", pch = 15, main = "l", col = "grey", lty = 4, lwd = 2, bty = "L")
+plot(t, y, type = "h", pch = 22, main = "h", col = "#009999", lty = 5, lwd = 2.5, bty = "C")
+plot(t, y, type = "n", pch = "#", main = "n", col = "#0000FF", lty = 6, lwd = 3, bty = "U")
+```
+### > Add objects to the existing plot
+#### > Add points and lines 
+#### If we want to add points to an existing plot, we can use the function points(), if we want to add lines, the function lines() will be  perfect to use, yet if we want to add only straight lines, we should use the function abline().
+#### Here's an easy example about it
+```{r}
+t <- 1:20
+y <- rnorm(20)
+plot(t, y, type = "b")
+abline(h = 0)
+abline(v = 15, lty = 2, col = 8, lwd = 2)
+points(t[15], y[15], pch = 19, col = 2)
+```
+
+#### > Add text
+#### If we want to add text to an existing plot, we can use the function text(x,y,labels=), and if we want to show the elements in the graph, we should use the function legend().
+#### Let's see an example of it
+```{r}
+x <- rnorm(50)
+y <- 3*x + rnorm(50, 0, 1)
+y1 <- 5*x + rnorm(50, 0, 2)
+plot(x, y, type = "p", pch = 19)
+abline(a = 0, b = 3)
+points(x, y1, col = 4, pch = 20)
+abline(a = 0, b = 5, col = 4)
+text(-1.5, 2, "A", cex = 2)
+text(1, -3, "B", cex = 2, col = 2)
+legend("topleft", c("Y", "Y1"), col = c(1,4), lty = c(1, 1), cex = 1)
+```
+
+### > Re-arrange the region the figure
+#### We can use par() to create an arbitrary region, and use "mfrow=c(,)" to define a multi-ﬁgure display by row, and define a multi-ﬁgure display by column by using "mfcol=c(,)".By the way there's another function "mai,mar=c(,,,)", they stands for the four margin sizes, in inches (mai), or in text line units (mar).
+#### For example,
+```{r}
+x <- rnorm(50)
+y <- 3*x + rnorm(50, 0, 1)
+y1 <- 5*x + rnorm(50, 0, 2)
+par(mfrow = c(1, 1), mar = c(0.5, 0.5, 0.5, 0.5))
+plot(x, y, type = "p", pch = 19)
+abline(a = 0, b = 3)
+points(x, y1, col = 4, pch = 20)
+abline(a = 0, b = 5, col = 4)
+text(-1.5, 2, "A", cex = 2)
+text(1, -5, "B", cex = 2, col = 2)
+legend("topleft", c("Y", "Y1"), col = c(1,4), lty = c(1, 1), cex = 1)
+```
+
+### > Split the plot
+#### If we want to split the plot into multiple areas, we can use the function layout().
+#### Here's an example
+```{r}
+x <- rnorm(50)
+y <- 3*x + rnorm(50, 0, 1)
+y1 <- 5*x + rnorm(50, 0, 2)
+y2 <- -2*x + rnorm(50, 0, 2)
+layout(matrix(c(1,2,3,3), 2, 2, byrow=TRUE))
+plot(x, y, type = "p", pch = 19, main = "Y")
+abline(a = 0, b = 3)
+plot(x, y1, type = "p", pch = 19, main = "Y1")
+abline(a = 0, b = 5)
+plot(x, y2, type = "p", pch = 19, main = "Y2")
+abline(a = 0, b = -2)
+```
+
+## 9.The evaluation of matrix
+#### Actually the evaluation works just the same as the basic calculation in addition and substraction.
+#### For example,
+```{r}
+A <- matrix(c(1:4), 2, 2)
+B <- matrix(c(5:8), 2, 2)
+A + B 
+A - B
+```
+
+#### Yet, it works differently if we want to do the multiplication between matrices.  We need change the orginal symbol into "%*%" to do the multiplication of matrices.
+```{r}
+A <- matrix(c(1:4), 2, 2)
+B <- matrix(c(5:8), 2, 2)
+A %*% B 
+```
+
+#### If we want to find the transpose of a matrix, we use t() to complete the task.
+#### For example,
+```{r}
+A <- matrix(c(1:4), 2, 2)
+t(A)
+```
+
+#### We use diag() to find the diagonal matrix and det() to find the determinant of the matrix.
+```{r}
+A <- matrix(c(1:4), 2, 2)
+diag(A)
+det(A)
+```
+
+#### What should we do if we want to find the inverse of the matrix?  If we meet this situation, we should use the function solve() to get the answer.
+```{r}
+A <- matrix(c(1:4), 2, 2)
+solve(A)
+```
+
+#### Last but not least, how can we find the eigen values and vectors in a matrix?  We use the function eigen() to solve the problem.
+```{r}
+A <- matrix(c(1:4), 2, 2)
+eigen(A)
+```
+
+## 10.R markdown
+### What can R markdown do?
+#### Rmarkdown can compile a single R Markdown document to a report in diﬀerent formats, such as PDF, HTML, or Word and create notebooks in which you can directly run code chunks interactively.   Also, we can use it to make slides for presentation.
+
+### What do we need if we want to use R markdown?
+#### First, we need to install the package "rmarkdown"
+#### Second, after installing the package, go to the menu bar, choose "File", "New File" and then click "R markdown..."
+#### Third, select the class of output you want your R markdown to be and the specific type of output then click "OK"
+#### Last, start editing!
+
+### Some basic skills in Rmarkdown
+
+#### > The headers
+#### We use "#" to show the paragraph.
+
+#### >The equations
+#### If we want to write an equation, we will need to add "$" both in the front and at the end of the equations. Such as $X=\pi*r^{2}$.  To tell in an easier way, type the equations in by the method of typing in latex.
+
+#### The table
+#### What can we do if we want to draw a table?  In the easiest way, just draw a table.
+#### For example,
+ Table Header | Second Header 
+------------- | ------------
+   Table Cell | Cell 2 
+       Cell 3 | Cell 4
+
+#### Input R codes
+#### If we want to input R codes in R markdown, click "insert" on the top right of the window and choose R, this way, we will be able to input R codes in our R markdown.
